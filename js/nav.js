@@ -1,6 +1,6 @@
 /* ==========================================================================
    Navigation + Background Canvas Injector
-   Floating glass pill nav — JP's Mobile Detailing LLC
+   JP's Mobile Detailing LLC
    ========================================================================== */
 (function () {
 
@@ -18,8 +18,15 @@
   const navHTML = `
     <nav class="glass-nav" id="navbar" role="navigation" aria-label="Main navigation">
       <div class="nav-inner">
-        <a href="index.html" class="nav-brand" aria-label="JP's Mobile Detailing Home">
-          JP's<span class="brand-dot">.</span>
+
+        <a href="index.html" class="nav-brand" aria-label="JP's Mobile Detailing — Home">
+          <img
+            src="Detaling%20photos/about%20page%20photos/Logo%20JP's%20Mobile%20Detailing%20IMPORTANT.png"
+            alt="JP's Mobile Detailing LLC"
+            class="nav-logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
+          />
+          <span class="nav-brand-text" style="display:none;">JP's<span class="brand-dot">.</span></span>
         </a>
 
         <ul class="nav-links" id="navLinks" role="list">
@@ -27,10 +34,11 @@
           <li><a href="services.html" data-page="services">Services</a></li>
           <li><a href="gallery.html"  data-page="gallery">Gallery</a></li>
           <li><a href="about.html"    data-page="about">About</a></li>
+          <li><a href="contact.html"  data-page="contact">Contact</a></li>
         </ul>
 
         <a href="#" class="btn-glow" id="navQuoteBtn" role="button" aria-haspopup="dialog">
-          Get a Quote ✦
+          Get a Quote
         </a>
 
         <button class="nav-toggle" id="navToggle"
@@ -46,7 +54,7 @@
         <a href="gallery.html"  data-page="gallery"   role="menuitem">Gallery</a>
         <a href="about.html"    data-page="about"     role="menuitem">About</a>
         <a href="contact.html"  data-page="contact"   role="menuitem">Contact</a>
-        <a href="#" id="mobileQuoteBtn" class="btn-glow" style="margin-top:4px;" role="menuitem">Get a Quote ✦</a>
+        <a href="#" id="mobileQuoteBtn" class="btn-glow" style="margin-top:4px;" role="menuitem">Get a Quote</a>
       </div>
     </nav>
   `;
@@ -66,7 +74,6 @@
     toggle.setAttribute('aria-expanded', open);
   });
 
-  // Close mobile on outside click
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.glass-nav')) {
       mobile.classList.remove('open');
@@ -93,7 +100,6 @@
     });
   }
 
-  // Also wire any in-page "Get a Quote" buttons
   document.addEventListener('click', (e) => {
     if (e.target.matches('[data-open-quote]') || e.target.closest('[data-open-quote]')) {
       e.preventDefault();
