@@ -37,8 +37,8 @@
           <li><a href="contact.html"  data-page="contact">Contact</a></li>
         </ul>
 
-        <a href="#" class="btn-glow" id="navQuoteBtn" role="button" aria-haspopup="dialog">
-          Get a Quote
+        <a href="booking.html" class="btn-glow" id="navQuoteBtn" role="button">
+          Book Now
         </a>
 
         <button class="nav-toggle" id="navToggle"
@@ -54,7 +54,7 @@
         <a href="gallery.html"  data-page="gallery"   role="menuitem">Gallery</a>
         <a href="about.html"    data-page="about"     role="menuitem">About</a>
         <a href="contact.html"  data-page="contact"   role="menuitem">Contact</a>
-        <a href="#" id="mobileQuoteBtn" class="btn-glow" style="margin-top:4px;" role="menuitem">Get a Quote</a>
+        <a href="booking.html"  data-page="booking"   role="menuitem">Book Now</a>
       </div>
     </nav>
   `;
@@ -82,23 +82,8 @@
     }
   });
 
-  /* ── Quote Modal Trigger ─────────────────── */
+  /* ── Quote Modal Trigger (in-page buttons only) ─────── */
   function openQuoteModal() { window.openModal && window.openModal(); }
-
-  document.getElementById('navQuoteBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    openQuoteModal();
-  });
-
-  const mobileQuoteBtn = document.getElementById('mobileQuoteBtn');
-  if (mobileQuoteBtn) {
-    mobileQuoteBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      mobile.classList.remove('open');
-      toggle.classList.remove('open');
-      openQuoteModal();
-    });
-  }
 
   document.addEventListener('click', (e) => {
     if (e.target.matches('[data-open-quote]') || e.target.closest('[data-open-quote]')) {
