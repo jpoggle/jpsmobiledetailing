@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://jpsmobiledetailing.org/sitemap.xml
-
-# Disallow any admin or private paths (none currently, but good practice)
-Disallow: /private/
-Disallow: /.git/
+Sitemap: https://jpsdetailing.org/sitemap.xml

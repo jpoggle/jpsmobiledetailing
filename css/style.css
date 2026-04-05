@@ -1198,21 +1198,43 @@ button { font-family: var(--font); }
   .gallery-tile--tall     { grid-column: span 1; grid-row: span 1; aspect-ratio: 4/3; }
   .featured-grid          { grid-template-columns: 1fr; }
   .featured-tile--main img { aspect-ratio: 16/9; }
-  .hero-stats             { gap: var(--s-sm); }
+  .hero-stats             { gap: 8px; flex-wrap: wrap; }
+  .stat-pill              { padding: 0.48rem 0.85rem; }
+  .stat-pill .stat-num    { font-size: 0.95rem; }
+  .stat-pill .stat-label  { font-size: 0.68rem; }
   .service-options        { grid-template-columns: 1fr; }
   .nav-links              { display: none; }
-  .nav-toggle             { display: flex; }
-  .btn-glow--lg, .btn-glass--lg { font-size: 0.88rem; padding: 0.72rem 1.4rem; }
-  .hero                   { padding-top: 100px; }
+  .nav-toggle             { display: flex; min-width: 44px; min-height: 44px; }
+  .btn-glow, .btn-glass   { min-height: 44px; }
+  .btn-glow--lg, .btn-glass--lg { font-size: 0.88rem; padding: 0.82rem 1.4rem; min-height: 48px; }
+  .hero-contact-pill      { min-height: 44px; padding: 0.72rem 1.2rem; font-size: 0.88rem; }
+  .hero                   { padding-top: 100px; min-height: 100svh; }
   .page-hero              { padding-top: 130px; }
   .life-photos-grid       { grid-template-columns: repeat(2, 1fr); }
   .gallery-ba-pair-inner img { height: 130px; }
+  .section-header         { margin-bottom: var(--s-lg); }
+  .service-card           { padding: var(--s-lg); }
+  .faq-question           { font-size: 0.88rem; padding: var(--s-md) 0; min-height: 44px; }
+  .philosophy-pillar      { gap: var(--s-sm); }
+  .area-badge             { font-size: 0.72rem; padding: 5px 10px; }
 }
 
 @media (max-width: 480px) {
+  :root { --s-xl: 2rem; --s-lg: 1.25rem; }
   .modal-panel    { padding: var(--s-lg) var(--s-md); border-radius: var(--r-xl) var(--r-xl) 0 0; }
   .modal-overlay  { align-items: flex-end; padding: 0; }
-  .hero-actions   { flex-direction: column; align-items: flex-start; }
+  .hero-actions   { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn-glow--lg,
+  .hero-actions .btn-glass--lg,
+  .hero-actions .hero-contact-pill { width: 100%; justify-content: center; text-align: center; }
+  .container      { padding: 0 var(--s-md); }
+  .d1             { font-size: clamp(2.2rem, 9vw, 3rem); }
+  .hero-stats     { gap: 6px; }
+  .stat-pill      { padding: 0.4rem 0.7rem; }
+  .stat-pill .stat-num   { font-size: 0.88rem; }
+  .stat-pill .stat-label { font-size: 0.62rem; }
+  .life-photos-grid .wide { grid-column: span 2; }
+  .gallery-ba-pair-inner img { height: 110px; }
 }
 
 @media (max-width: 700px) {

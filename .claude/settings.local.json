@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(grep -n \"📞\\\\|✉️\\\\|📍\\\\|🕐\\\\|💬\\\\|✦\\\\|🔌\\\\|🎨\\\\|📷\" /home/parallels/jpsmobiledetailing/*.html)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'Fix: sr-only class, remaining emoji in services/gallery:*)",
+      "Bash(git push:*)",
+      "Bash(git commit -m 'Add booking.html to nav as '\\\\''Book Now'\\\\'' button:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(python3:*)",
+      "Bash(git fetch:*)"
+    ]
+  }
+}

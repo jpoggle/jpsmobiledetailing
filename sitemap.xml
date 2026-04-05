@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jpsmobiledetailing.org/</loc>
-    <lastmod>2025-04-04</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://jpsdetailing.org/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://jpsmobiledetailing.org/services.html</loc>
-    <lastmod>2025-04-04</lastmod>
+    <loc>https://jpsdetailing.org/services.html</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jpsdetailing.org/gallery.html</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://jpsmobiledetailing.org/booking.html</loc>
-    <lastmod>2025-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://jpsmobiledetailing.org/contact.html</loc>
-    <lastmod>2025-04-04</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://jpsmobiledetailing.org/about.html</loc>
-    <lastmod>2025-04-04</lastmod>
+    <loc>https://jpsdetailing.org/about.html</loc>
+    <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://jpsdetailing.org/contact.html</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
