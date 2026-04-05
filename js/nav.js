@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Navigation + Background Canvas Injector
+   Floating glass pill nav — JP's Mobile Detailing LLC
+   ========================================================================== */
+(function () {
+
+  /* ── Animated Background Canvas ──────────── */
+  const bgHTML = `
+    <div id="bg-canvas" aria-hidden="true">
+      <div class="bg-blob" id="blob-1"></div>
+      <div class="bg-blob" id="blob-2"></div>
+      <div class="bg-blob" id="blob-3"></div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', bgHTML);
+
+  /* ── Navigation HTML ─────────────────────── */
+  const navHTML = `
+    <nav class="glass-nav" id="navbar" role="navigation" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-brand" aria-label="JP's Mobile Detailing Home">
+          JP's<span class="brand-dot">.</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="index.html"    data-page="index">Home</a></li>
+          <li><a href="services.html" data-page="services">Services</a></li>
+          <li><a href="gallery.html"  data-page="gallery">Gallery</a></li>
+          <li><a href="about.html"    data-page="about">About</a></li>
+        </ul>
+
+        <a href="#" class="btn-glow" id="navQuoteBtn" role="button" aria-haspopup="dialog">
+          Get a Quote ✦
+        </a>
+
+        <button class="nav-toggle" id="navToggle"
+          aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMobile">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div class="nav-mobile" id="navMobile" role="menu">
+        <a href="index.html"    data-page="index"    role="menuitem">Home</a>
+        <a href="services.html" data-page="services"  role="menuitem">Services</a>
+        <a href="gallery.html"  data-page="gallery"   role="menuitem">Gallery</a>
+        <a href="about.html"    data-page="about"     role="menuitem">About</a>
+        <a href="contact.html"  data-page="contact"   role="menuitem">Contact</a>
+        <a href="#" id="mobileQuoteBtn" class="btn-glow" style="margin-top:4px;" role="menuitem">Get a Quote ✦</a>
+      </div>
+    </nav>
+  `;
+  document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+  /* ── Active Link ─────────────────────────── */
+  const page = document.body.dataset.page || 'index';
+  document.querySelectorAll(`[data-page="${page}"]`).forEach(el => el.classList.add('active'));
+
+  /* ── Mobile Toggle ───────────────────────── */
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+
+  toggle.addEventListener('click', () => {
+    const open = mobile.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  // Close mobile on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.glass-nav')) {
+      mobile.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    }
+  });
+
+  /* ── Quote Modal Trigger ─────────────────── */
+  function openQuoteModal() { window.openModal && window.openModal(); }
+
+  document.getElementById('navQuoteBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    openQuoteModal();
+  });
+
+  const mobileQuoteBtn = document.getElementById('mobileQuoteBtn');
+  if (mobileQuoteBtn) {
+    mobileQuoteBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      mobile.classList.remove('open');
+      toggle.classList.remove('open');
+      openQuoteModal();
+    });
+  }
+
+  // Also wire any in-page "Get a Quote" buttons
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('[data-open-quote]') || e.target.closest('[data-open-quote]')) {
+      e.preventDefault();
+      openQuoteModal();
+    }
+  });
+
+})();

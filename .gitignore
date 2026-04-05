@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Assets (add your own images — don't commit large binaries)
+assets/*.jpg
+assets/*.jpeg
+assets/*.png
+assets/*.mp4
+assets/*.webp
+# Keep the .gitkeep placeholder
+!assets/.gitkeep
+
+# Logs
+*.log
+
+# Environment / secrets (never commit these)
+.env
+.env.*
+stripe_keys.js
