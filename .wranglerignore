@@ -1,1 +1,9 @@
 .git
+.claude
+photos for claude
+Detaling photos
+deploy.sh
+fix-nginx.sh
+setup-nginx.sh
+nginx.conf
+nginx-site.conf
