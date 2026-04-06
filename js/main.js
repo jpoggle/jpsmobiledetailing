@@ -66,22 +66,30 @@ function initFAQ() {
   });
 }
 
-/* ── Contact Form (EmailJS) ────────────────────────────────────────────
-   Uses the same EmailJS service/key set in modal.js.
-   Create a second template in EmailJS with these variables:
-     {{from_name}}  {{email}}  {{phone}}  {{service_interest}}  {{message}}
-   Then update EMAILJS_CONTACT_TMPL in modal.js config block at the top.
+/* ── EmailJS helpers ───────────────────────────────────────────────────
+   modal.js (loaded first) sets EMAILJS_PUBLIC_KEY / SERVICE_ID / templates.
    ----------------------------------------------------------------------- */
-
-/* Read the config constants set by modal.js (loaded before main.js) */
 function getEmailJSConfig() {
   return {
-    publicKey:  typeof EMAILJS_PUBLIC_KEY !== 'undefined'  ? EMAILJS_PUBLIC_KEY  : null,
-    serviceId:  typeof EMAILJS_SERVICE_ID !== 'undefined'  ? EMAILJS_SERVICE_ID  : null,
-    templateId: typeof EMAILJS_CONTACT_TMPL !== 'undefined' ? EMAILJS_CONTACT_TMPL : null,
+    publicKey:  typeof EMAILJS_PUBLIC_KEY   !== 'undefined' ? EMAILJS_PUBLIC_KEY   : null,
+    serviceId:  typeof EMAILJS_SERVICE_ID   !== 'undefined' ? EMAILJS_SERVICE_ID   : null,
+    templateId: typeof EMAILJS_QUOTE_TMPL   !== 'undefined' ? EMAILJS_QUOTE_TMPL   : null,
   };
 }
 
+function sendEmail(params, onDone) {
+  const cfg = getEmailJSConfig();
+  if (cfg.publicKey && cfg.publicKey !== 'YOUR_PUBLIC_KEY' && window.emailjs) {
+    emailjs.send(cfg.serviceId, cfg.templateId, params)
+      .then(() => onDone(true))
+      .catch((err) => { console.error('EmailJS error:', err); onDone(false); });
+  } else {
+    console.log('EmailJS not configured — form data:', params);
+    onDone(true);
+  }
+}
+
+/* ── Contact Form ──────────────────────────────────────────────────────── */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
@@ -93,37 +101,87 @@ function initContactForm() {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    const cfg = getEmailJSConfig();
-
     const params = {
-      from_name:        (form.querySelector('[name="name"]')    || form.querySelector('#cName'))?.value    || '',
-      email:            (form.querySelector('[name="email"]')   || form.querySelector('#cEmail'))?.value   || '',
-      phone:            (form.querySelector('[name="phone"]')   || form.querySelector('#cPhone'))?.value   || '',
-      service_interest: (form.querySelector('[name="service"]') || form.querySelector('#cService'))?.value || '',
-      message:          (form.querySelector('[name="message"]') || form.querySelector('#cMessage'))?.value || '',
+      from_name: (form.querySelector('[name="name"]')    || form.querySelector('#cName'))?.value    || '',
+      phone:     (form.querySelector('[name="phone"]')   || form.querySelector('#cPhone'))?.value   || '',
+      service:   (form.querySelector('[name="service"]') || form.querySelector('#cService'))?.value || '',
+      notes:     (form.querySelector('[name="message"]') || form.querySelector('#cMessage'))?.value || '',
+      vehicle: 'N/A', vehicle_type: 'N/A', condition: 'N/A', addons: 'N/A', city: 'N/A',
     };
 
     function onDone(success) {
       btn.textContent = success ? '✓ Message Sent!' : '✓ Sent!';
       btn.style.background = 'linear-gradient(135deg, #0d9e7a, #14c99a)';
-      btn.style.animation   = 'none';
+      btn.style.animation  = 'none';
       setTimeout(() => {
-        btn.textContent   = orig;
-        btn.disabled      = false;
+        btn.textContent      = orig;
+        btn.disabled         = false;
         btn.style.background = '';
         btn.style.animation  = '';
         form.reset();
       }, 4000);
     }
 
-    if (cfg.publicKey && cfg.publicKey !== 'YOUR_PUBLIC_KEY' && window.emailjs) {
-      emailjs.send(cfg.serviceId, cfg.templateId, params)
-        .then(() => onDone(true))
-        .catch((err) => { console.error('EmailJS contact error:', err); onDone(false); });
-    } else {
-      console.log('Contact form (EmailJS not configured yet):', params);
-      onDone(true);
+    sendEmail(params, onDone);
+  });
+}
+
+/* ── Booking Form ──────────────────────────────────────────────────────── */
+function initBookingForm() {
+  const form = document.getElementById('bookingForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn  = form.querySelector('[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const firstName   = form.querySelector('#bFirstName')?.value.trim()  || '';
+    const lastName    = form.querySelector('#bLastName')?.value.trim()   || '';
+    const phone       = form.querySelector('#bPhone')?.value.trim()      || '';
+    const email       = form.querySelector('#bEmail')?.value.trim()      || '';
+    const vehicle     = form.querySelector('#bVehicle')?.value.trim()    || '';
+    const vehicleSize = form.querySelector('#bVehicleSize')?.value       || 'Not specified';
+    const service     = form.querySelector('#bService')?.value           || '';
+    const date        = form.querySelector('#bDate')?.value              || '';
+    const time        = form.querySelector('#bTime')?.value              || '';
+    const address     = form.querySelector('#bAddress')?.value.trim()    || '';
+    const notes       = form.querySelector('#bNotes')?.value.trim()      || '';
+
+    const params = {
+      from_name:    `${firstName} ${lastName}`.trim(),
+      phone:        phone,
+      service:      service,
+      vehicle:      vehicle,
+      vehicle_type: vehicleSize,
+      city:         address,
+      addons:       'N/A',
+      condition:    'N/A',
+      notes: [
+        email   ? `Email: ${email}`     : '',
+        date    ? `Date: ${date}`        : '',
+        time    ? `Time: ${time}`        : '',
+        address ? `Address: ${address}`  : '',
+        notes   ? `Notes: ${notes}`      : '',
+      ].filter(Boolean).join('\n') || 'None',
+    };
+
+    function onDone(success) {
+      btn.textContent = success ? '✓ Request Sent!' : '✓ Sent!';
+      btn.style.background = 'linear-gradient(135deg, #0d9e7a, #14c99a)';
+      btn.style.animation  = 'none';
+      setTimeout(() => {
+        btn.textContent      = orig;
+        btn.disabled         = false;
+        btn.style.background = '';
+        btn.style.animation  = '';
+        form.reset();
+      }, 5000);
     }
+
+    sendEmail(params, onDone);
   });
 }
 
@@ -133,4 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initFAQ();
   initContactForm();
+  initBookingForm();
 });
