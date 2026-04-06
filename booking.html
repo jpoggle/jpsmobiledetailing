@@ -41,30 +41,28 @@
 </head>
 <body data-page="booking">
 
+  <main>
+
   <!-- ═══════════════════════════════════════
        PAGE HERO
   ════════════════════════════════════════ -->
-  <section class="hero-bg page-hero">
+  <section class="page-hero" aria-label="Book Now page header">
     <div class="container">
-      <div class="page-hero-content">
-        <nav aria-label="Breadcrumb" style="margin-bottom:1rem;">
-          <ol style="display:flex; gap:0.5rem; list-style:none; font-size:0.85rem; color:rgba(255,255,255,0.45);">
-            <li><a href="index.html" style="color:rgba(255,255,255,0.45);">Home</a></li>
-            <li style="color:rgba(255,255,255,0.25);">/</li>
-            <li style="color:rgba(255,255,255,0.8);">Book Now</li>
-          </ol>
-        </nav>
-        <span class="label" style="color:rgba(255,255,255,0.5);">Commerce Township, MI &amp; All of Oakland County</span>
-        <h1 class="display-2">Book Your Detail</h1>
-        <p class="subheadline">Fill out the form and JP will confirm your appointment. We come to you anywhere in Commerce Township and Oakland County, Michigan.</p>
-      </div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Book Now</span>
+      </nav>
+      <span class="eyebrow">Commerce Township, MI &amp; All of Oakland County</span>
+      <h1 class="d2">Book Your Detail</h1>
+      <p class="lead" style="margin:var(--s-sm) auto 0;">Fill out the form and JP will confirm your appointment. We come to you anywhere in Commerce Township and Oakland County, Michigan.</p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════
        BOOKING FORM
   ════════════════════════════════════════ -->
-  <section class="section" style="background:white;" aria-labelledby="booking-heading">
+  <section class="section" aria-labelledby="booking-heading">
     <div class="container">
 
       <!-- Stripe Coming Soon Banner -->
@@ -77,8 +75,8 @@
       " role="note">
         <div style="font-size:1.5rem; flex-shrink:0;" aria-hidden="true">💳</div>
         <div>
-          <strong style="font-size:0.9rem; color:var(--blue);">Secure Online Payments Coming Soon</strong>
-          <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.1rem;">
+          <strong style="font-size:0.9rem; color:var(--cyan);">Secure Online Payments Coming Soon</strong>
+          <p style="font-size:0.85rem; color:var(--t-70); margin-top:0.1rem;">
             Stripe-powered secure online booking is on the way! For now, we'll confirm your appointment and accept payment on-site. Cash &amp; cards accepted.
           </p>
         </div>
@@ -87,12 +85,12 @@
       <div style="max-width:700px; margin:0 auto;">
         <div class="glass reveal" style="padding:2.5rem;">
           <h2 style="font-size:1.3rem; font-weight:700; margin-bottom:0.4rem;" id="booking-heading">Request an Appointment</h2>
-          <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:2rem;">
+          <p style="color:var(--t-70); font-size:0.9rem; margin-bottom:2rem;">
             Serving Commerce Township, Walled Lake, Milford, Waterford, West Bloomfield, Novi &amp; all of Oakland County, Michigan. We'll confirm your slot within a few hours.
           </p>
 
           <form id="bookingForm" novalidate>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
               <div class="form-group">
                 <label class="form-label" for="bFirstName">First Name *</label>
                 <input class="form-input" type="text" id="bFirstName" name="firstName" placeholder="John" required autocomplete="given-name" />
@@ -152,7 +150,7 @@
               </select>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
               <div class="form-group">
                 <label class="form-label" for="bDate">Preferred Date *</label>
                 <input class="form-input" type="date" id="bDate" name="date" required />
@@ -180,24 +178,24 @@
                 placeholder="Any special requests, access instructions, vehicle condition notes, or add-ons you want..."></textarea>
             </div>
 
-            <div style="background:rgba(0,122,255,0.05); border:1px solid rgba(0,122,255,0.12); border-radius:var(--radius-sm); padding:1rem 1.2rem; margin-bottom:1.5rem;" role="note">
-              <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.7;">
-                <strong style="color:var(--text);">No payment required to book.</strong><br/>
+            <div style="background:rgba(0,122,255,0.05); border:1px solid rgba(0,122,255,0.12); border-radius:var(--r-sm); padding:1rem 1.2rem; margin-bottom:1.5rem;" role="note">
+              <p style="font-size:0.85rem; color:var(--t-70); line-height:1.7;">
+                <strong style="color:var(--t-100);">No payment required to book.</strong><br/>
                 JP will call or text you to confirm your appointment time and provide your final price. Payment is collected on-site on the day of service. Cash and cards accepted.
               </p>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem; padding:0.9rem;" aria-label="Submit booking request for mobile detailing in Commerce Township MI">
+            <button type="submit" class="btn-glow" style="width:100%;" aria-label="Submit booking request for mobile detailing in Commerce Township MI">
               Request Appointment →
             </button>
           </form>
         </div>
 
         <div style="text-align:center; margin-top:2rem;">
-          <p style="color:var(--text-secondary); font-size:0.9rem;">Prefer to talk? Call or text JP directly:</p>
+          <p style="color:var(--t-70); font-size:0.9rem;">Prefer to talk? Call or text JP directly:</p>
           <div style="display:flex; gap:1rem; justify-content:center; margin-top:0.8rem; flex-wrap:wrap;">
-            <a href="tel:9807772919" class="btn btn-primary" aria-label="Call JP's Mobile Detailing">📞 Call 980-777-2919</a>
-            <a href="sms:9807772919" class="btn btn-outline" aria-label="Text JP's Mobile Detailing">💬 Text Us</a>
+            <a href="tel:9807772919" class="btn-glow" aria-label="Call JP's Mobile Detailing">📞 Call 980-777-2919</a>
+            <a href="sms:9807772919" class="btn-glass" aria-label="Text JP's Mobile Detailing">💬 Text Us</a>
           </div>
         </div>
       </div>
@@ -210,9 +208,9 @@
   <section class="section" aria-labelledby="process-heading">
     <div class="container">
       <div class="section-header reveal">
-        <span class="label">The Process</span>
-        <h2 class="display-2" id="process-heading">How Mobile Detailing Works in Commerce Township, MI</h2>
-        <p class="subheadline">Simple, straightforward, and stress-free from start to finish.</p>
+        <span class="eyebrow">The Process</span>
+        <h2 class="d2" id="process-heading">How Mobile Detailing Works in Commerce Township, MI</h2>
+        <p class="lead" style="margin:var(--s-sm) auto 0; text-align:center;">Simple, straightforward, and stress-free from start to finish.</p>
       </div>
 
       <div style="max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:1rem;">
@@ -249,57 +247,79 @@
   </section>
 
   <!-- CTA -->
-  <section class="hero-bg" style="padding:5rem 1.5rem; text-align:center;">
+  <section class="cta-strip" aria-label="Call to action">
     <div class="container">
-      <h2 class="display-2" style="color:white; margin-bottom:1rem;">Questions Before Booking?</h2>
-      <p class="subheadline" style="color:rgba(255,255,255,0.65); margin:0 auto 2rem; max-width:460px;">Call or text JP directly — he'll answer any question and walk you through the right package for your vehicle.</p>
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="tel:9807772919" class="btn btn-primary btn-lg">📞 Call 980-777-2919</a>
-        <a href="contact.html" class="btn btn-secondary btn-lg">Send a Message</a>
+      <div class="reveal">
+        <span class="eyebrow">Commerce Township, MI &amp; All of Oakland County</span>
+        <h2 class="d2" style="margin:var(--s-sm) 0 var(--s-md);">Questions Before Booking?</h2>
+        <p class="lead" style="margin:0 auto var(--s-lg); text-align:center;">Call or text JP directly — he'll answer any question and walk you through the right package for your vehicle.</p>
+        <div style="display:flex; gap:var(--s-sm); justify-content:center; flex-wrap:wrap;">
+          <a href="tel:9807772919" class="btn-glow btn-glow--lg">📞 Call 980-777-2919</a>
+          <a href="contact.html" class="btn-glass btn-glass--lg">Send a Message</a>
+        </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand">JP's <span>Mobile Detailing</span> LLC</div>
-          <p class="footer-desc">Commerce Township, Michigan's premier mobile auto detailing service.</p>
+          <img
+            src="Detaling%20photos/about%20page%20photos/Logo%20JP's%20Mobile%20Detailing%20IMPORTANT.jpg"
+            alt="JP's Mobile Detailing LLC"
+            class="footer-logo"
+          />
+          <p class="footer-desc">Commerce Township, Michigan's premier mobile auto detailing service. We come to you — delivering showroom results across all of Oakland County, MI.</p>
           <address style="font-style:normal;">
-            <div class="footer-contact-item"><span>📞</span><a href="tel:9807772919" style="color:rgba(255,255,255,0.55);">980-777-2919</a></div>
-            <div class="footer-contact-item"><span>✉️</span><a href="mailto:jp08merritt@icloud.com" style="color:rgba(255,255,255,0.55);">jp08merritt@icloud.com</a></div>
-            <div class="footer-contact-item"><span>📍</span><span>Commerce Township, MI 48382</span></div>
+            <div class="footer-contact-row"><a href="tel:9807772919">980-777-2919</a></div>
+            <div class="footer-contact-row"><a href="mailto:jp08merritt@icloud.com">jp08merritt@icloud.com</a></div>
+            <div class="footer-contact-row">Commerce Township, MI 48382</div>
           </address>
         </div>
         <div>
-          <h4>Pages</h4>
+          <h5>Pages</h5>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services &amp; Pricing</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="about.html">About JP</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="booking.html">Book Now</a></li>
           </ul>
         </div>
         <div>
-          <h4>Services</h4>
+          <h5>Services</h5>
           <ul>
-            <li><a href="services.html">Basic Wash &amp; Vac</a></li>
-            <li><a href="services.html">Full Detail</a></li>
-            <li><a href="services.html">Ceramic Coating</a></li>
-            <li><a href="services.html">Paint Correction</a></li>
+            <li><a href="services.html">Exterior Detail — $60+</a></li>
+            <li><a href="services.html">Interior Detail — $180+</a></li>
+            <li><a href="services.html">Interior &amp; Exterior — $250+</a></li>
+            <li><a href="services.html">Signature Package — $450+</a></li>
+            <li><a href="services.html">Ceramic Coating — $800+</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Service Area</h5>
+          <ul>
+            <li><a href="services.html">Commerce Township</a></li>
+            <li><a href="services.html">West Bloomfield</a></li>
+            <li><a href="services.html">Walled Lake</a></li>
+            <li><a href="services.html">Novi, MI</a></li>
+            <li><a href="services.html">Bloomfield Hills</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>© 2025 JP's Mobile Detailing LLC — Commerce Township, MI. All rights reserved.</span>
-        <span>jpsmobiledetailing.org</span>
+      <div class="footer-bottom" style="flex-wrap:wrap; gap:8px;">
+        <span>&copy; 2025 JP's Mobile Detailing LLC &mdash; Commerce Township, MI. All rights reserved.</span>
+        <a href="https://share.google/YqyEwIM4pKtyTyDoV" target="_blank" rel="noopener" style="color:var(--cyan); font-weight:600;">Google Reviews</a>
+        <a href="https://jpsdetailing.org" style="color:inherit;">jpsdetailing.org</a>
       </div>
     </div>
   </footer>
 
   <script src="js/nav.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

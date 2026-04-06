@@ -875,7 +875,7 @@ button { font-family: var(--font); }
 }
 .faq-item.open .faq-icon { transform: rotate(45deg); }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.3s var(--ease); }
-.faq-item.open .faq-answer { max-height: 300px; padding-bottom: var(--s-md); }
+.faq-item.open .faq-answer { max-height: 600px; padding-bottom: var(--s-md); }
 .faq-answer p { padding: 0 var(--s-lg); color: var(--t-70); font-size: 0.9rem; line-height: 1.80; }
 
 /* -- 18. GALLERY -------------------------------------------------------- */
@@ -1214,7 +1214,8 @@ button { font-family: var(--font); }
   .gallery-ba-pair-inner img { height: 130px; }
   .section-header         { margin-bottom: var(--s-lg); }
   .service-card           { padding: var(--s-lg); }
-  .faq-question           { font-size: 0.88rem; padding: var(--s-md) 0; min-height: 44px; }
+  .faq-question           { font-size: 0.88rem; padding: var(--s-sm) var(--s-sm); min-height: 44px; }
+  .faq-answer p           { padding: 0 var(--s-sm); }
   .philosophy-pillar      { gap: var(--s-sm); }
   .area-badge             { font-size: 0.72rem; padding: 5px 10px; }
 }
