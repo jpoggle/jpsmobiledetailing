@@ -9,7 +9,15 @@
       "Bash(git commit -m 'Add booking.html to nav as '\\\\''Book Now'\\\\'' button:*)",
       "Bash(git commit -m ':*)",
       "Bash(python3:*)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "Bash(identify --version)",
+      "Bash(convert --version)",
+      "Bash(sudo apt-get:*)",
+      "Bash(sudo -S apt-get install -y imagemagick webp jpegoptim optipng)",
+      "Bash(convert 'Detaling photos/exterior details/Corvette Stingray/Corvette C3 1970 Stingray IMPORTANT.png' -quality 90 -strip -interlace Plane 'Detaling photos/exterior details/Corvette Stingray/Corvette C3 1970 Stingray IMPORTANT.jpg')",
+      "Bash(rm \"Detaling photos/exterior details/Corvette Stingray/Corvette C3 1970 Stingray IMPORTANT.png\")",
+      "Bash(convert 'Detaling photos/about page photos/Logo JP'\\\\''s Mobile Detailing IMPORTANT.png' -resize '512x512>' -quality 95 -strip 'Detaling photos/about page photos/Logo JP'\\\\''s Mobile Detailing IMPORTANT.jpg')",
+      "Bash(rm \"Detaling photos/about page photos/Logo JP's Mobile Detailing IMPORTANT.png\")"
     ]
   }
 }

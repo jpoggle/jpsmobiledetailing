@@ -21,7 +21,7 @@
 
         <a href="index.html" class="nav-brand" aria-label="JP's Mobile Detailing — Home">
           <img
-            src="Detaling%20photos/about%20page%20photos/Logo%20JP's%20Mobile%20Detailing%20IMPORTANT.png"
+            src="Detaling%20photos/about%20page%20photos/Logo%20JP's%20Mobile%20Detailing%20IMPORTANT.jpg"
             alt="JP's Mobile Detailing LLC"
             class="nav-logo"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
