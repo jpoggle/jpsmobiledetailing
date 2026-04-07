@@ -126,70 +126,10 @@ function initContactForm() {
   });
 }
 
-/* ── Booking Form ──────────────────────────────────────────────────────── */
-function initBookingForm() {
-  const form = document.getElementById('bookingForm');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn  = form.querySelector('[type="submit"]');
-    const orig = btn.textContent;
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    const firstName   = form.querySelector('#bFirstName')?.value.trim()  || '';
-    const lastName    = form.querySelector('#bLastName')?.value.trim()   || '';
-    const phone       = form.querySelector('#bPhone')?.value.trim()      || '';
-    const email       = form.querySelector('#bEmail')?.value.trim()      || '';
-    const vehicle     = form.querySelector('#bVehicle')?.value.trim()    || '';
-    const vehicleSize = form.querySelector('#bVehicleSize')?.value       || 'Not specified';
-    const service     = form.querySelector('#bService')?.value           || '';
-    const date        = form.querySelector('#bDate')?.value              || '';
-    const time        = form.querySelector('#bTime')?.value              || '';
-    const address     = form.querySelector('#bAddress')?.value.trim()    || '';
-    const notes       = form.querySelector('#bNotes')?.value.trim()      || '';
-
-    const params = {
-      from_name:    `${firstName} ${lastName}`.trim(),
-      phone:        phone,
-      service:      service,
-      vehicle:      vehicle,
-      vehicle_type: vehicleSize,
-      city:         address,
-      addons:       'N/A',
-      condition:    'N/A',
-      notes: [
-        email   ? `Email: ${email}`     : '',
-        date    ? `Date: ${date}`        : '',
-        time    ? `Time: ${time}`        : '',
-        address ? `Address: ${address}`  : '',
-        notes   ? `Notes: ${notes}`      : '',
-      ].filter(Boolean).join('\n') || 'None',
-    };
-
-    function onDone(success) {
-      btn.textContent = success ? '✓ Request Sent!' : '✓ Sent!';
-      btn.style.background = 'linear-gradient(135deg, #0d9e7a, #14c99a)';
-      btn.style.animation  = 'none';
-      setTimeout(() => {
-        btn.textContent      = orig;
-        btn.disabled         = false;
-        btn.style.background = '';
-        btn.style.animation  = '';
-        form.reset();
-      }, 5000);
-    }
-
-    sendEmail(params, onDone);
-  });
-}
-
 /* ── Init ─────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCounters();
   initFAQ();
   initContactForm();
-  initBookingForm();
 });

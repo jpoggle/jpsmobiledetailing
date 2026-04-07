@@ -338,5 +338,84 @@
   <script src="js/nav.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Booking form — inline so it is never affected by JS caching -->
+  <script>
+  (function () {
+    var SERVICE_ID  = 'service_hcxdjk5';
+    var TEMPLATE_ID = 'template_quote';
+    var PUBLIC_KEY  = 'tvyTi4qQO8jcgerax';
+
+    var form = document.getElementById('bookingForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var btn  = form.querySelector('[type="submit"]');
+      var orig = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      var params = {
+        from_name:    (document.getElementById('bFirstName').value.trim() + ' ' +
+                       document.getElementById('bLastName').value.trim()).trim(),
+        phone:        document.getElementById('bPhone').value.trim(),
+        service:      document.getElementById('bService').value,
+        vehicle:      document.getElementById('bVehicle').value.trim(),
+        vehicle_type: document.getElementById('bVehicleSize').value || 'Not specified',
+        city:         document.getElementById('bAddress').value.trim(),
+        addons:       'N/A',
+        condition:    'N/A',
+        notes: [
+          document.getElementById('bEmail').value.trim()   ? 'Email: '   + document.getElementById('bEmail').value.trim()   : '',
+          document.getElementById('bDate').value           ? 'Date: '    + document.getElementById('bDate').value           : '',
+          document.getElementById('bTime').value           ? 'Time: '    + document.getElementById('bTime').value           : '',
+          document.getElementById('bAddress').value.trim() ? 'Address: ' + document.getElementById('bAddress').value.trim() : '',
+          document.getElementById('bNotes').value.trim()   ? 'Notes: '   + document.getElementById('bNotes').value.trim()   : '',
+        ].filter(Boolean).join('\n') || 'None',
+      };
+
+      function done(ok) {
+        if (ok) {
+          btn.textContent = '✓ Request Sent! JP will contact you soon.';
+          btn.style.background = 'linear-gradient(135deg, #0d9e7a, #14c99a)';
+          btn.style.animation  = 'none';
+          setTimeout(function () {
+            btn.textContent      = orig;
+            btn.disabled         = false;
+            btn.style.background = '';
+            btn.style.animation  = '';
+            form.reset();
+          }, 5000);
+        } else {
+          btn.textContent      = '✗ Failed — please call 980-777-2919';
+          btn.style.background = '#c0392b';
+          btn.style.animation  = 'none';
+          btn.disabled         = false;
+        }
+      }
+
+      function trySend(retries) {
+        if (window.emailjs) {
+          emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
+            .then(function ()    { done(true);  })
+            .catch(function (err){ console.error('EmailJS booking error:', err); done(false); });
+        } else if (retries > 0) {
+          setTimeout(function () { trySend(retries - 1); }, 300);
+        } else {
+          console.error('EmailJS failed to load');
+          done(false);
+        }
+      }
+
+      // Ensure emailjs is initialized, then send
+      if (window.emailjs) {
+        emailjs.init(PUBLIC_KEY);
+      }
+      trySend(10); // retry up to 10x (3 seconds) waiting for SDK
+    });
+  })();
+  </script>
 </body>
 </html>
