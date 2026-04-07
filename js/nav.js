@@ -37,7 +37,7 @@
           <li><a href="contact.html"  data-page="contact">Contact</a></li>
         </ul>
 
-        <a href="booking.html" class="btn-glow" id="navQuoteBtn" role="button">
+        <a href="booking.html" class="btn-glow" id="navQuoteBtn" role="button" data-open-quote>
           Book Now
         </a>
 
@@ -54,7 +54,7 @@
         <a href="gallery.html"  data-page="gallery"   role="menuitem">Gallery</a>
         <a href="about.html"    data-page="about"     role="menuitem">About</a>
         <a href="contact.html"  data-page="contact"   role="menuitem">Contact</a>
-        <a href="booking.html"  data-page="booking"   role="menuitem">Book Now</a>
+        <a href="booking.html"  data-page="booking"   role="menuitem" data-open-quote>Book Now</a>
       </div>
     </nav>
   `;
@@ -82,12 +82,16 @@
     }
   });
 
-  /* ── Quote Modal Trigger (in-page buttons only) ─────── */
+  /* ── Quote Modal Trigger ─────────────────────────────── */
   function openQuoteModal() { window.openModal && window.openModal(); }
 
   document.addEventListener('click', (e) => {
     if (e.target.matches('[data-open-quote]') || e.target.closest('[data-open-quote]')) {
       e.preventDefault();
+      // Close mobile nav first if it's open
+      mobile.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
       openQuoteModal();
     }
   });
