@@ -734,9 +734,24 @@ button { font-family: var(--font); }
 .modal-panel::-webkit-scrollbar { display: none; }
 .modal-overlay.open .modal-panel { transform: translateY(0) scale(1); }
 
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-sm);
+  margin-bottom: var(--s-lg);
+}
+.progress-dots  { display: flex; gap: 6px; }
+.progress-dot {
+  width: 28px; height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.07);
+  transition: var(--trans);
+}
+.progress-dot.active { background: var(--cyan); }
+.progress-label { font-size: 0.74rem; color: var(--t-50); margin-left: auto; }
 .modal-close {
-  position: absolute;
-  top: var(--s-md); right: var(--s-md);
+  flex-shrink: 0;
+  margin-left: var(--s-sm);
   width: 28px; height: 28px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.09);
@@ -748,17 +763,6 @@ button { font-family: var(--font); }
   transition: var(--trans);
 }
 .modal-close:hover { background: rgba(255,255,255,0.12); color: var(--t-100); }
-
-.modal-progress { display: flex; align-items: center; gap: var(--s-sm); margin-bottom: var(--s-lg); }
-.progress-dots  { display: flex; gap: 6px; }
-.progress-dot {
-  width: 28px; height: 3px;
-  border-radius: 2px;
-  background: rgba(255,255,255,0.07);
-  transition: var(--trans);
-}
-.progress-dot.active { background: var(--cyan); }
-.progress-label { font-size: 0.74rem; color: var(--t-50); margin-left: auto; }
 
 .modal-step { display: none; animation: step-in 0.30s var(--ease-spring); }
 .modal-step.active { display: block; }

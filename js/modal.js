@@ -38,16 +38,15 @@ const EMAILJS_CONTACT_TMPL = 'template_quote';  // reuse same template until you
   <div class="modal-overlay" id="quoteModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-panel" id="modalPanel">
 
-      <button class="modal-close" id="modalClose" aria-label="Close quote form">✕</button>
-
-      <!-- Progress dots -->
-      <div class="modal-progress" aria-hidden="true">
-        <div class="progress-dots">
+      <!-- Modal header row: dots · step label · close -->
+      <div class="modal-header">
+        <div class="progress-dots" aria-hidden="true">
           <div class="progress-dot active" id="dot1"></div>
           <div class="progress-dot"        id="dot2"></div>
           <div class="progress-dot"        id="dot3"></div>
         </div>
         <span class="progress-label" id="progressLabel">Step 1 of 3</span>
+        <button class="modal-close" id="modalClose" aria-label="Close quote form">✕</button>
       </div>
 
       <!-- ── STEP 1: Service Selection ─────── -->
