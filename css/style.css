@@ -1258,3 +1258,37 @@ button { font-family: var(--font); }
   }
   #blob-1, #blob-2, #blob-3 { filter: blur(60px); }
 }
+
+/* ── Review Cards ─────────────────────────────────────────────────────── */
+.review-card {
+  padding: var(--s-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-sm);
+}
+.review-stars {
+  color: #FFB800;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+}
+.review-text {
+  font-size: 0.875rem;
+  color: var(--t-70);
+  line-height: 1.78;
+  flex: 1;
+}
+.review-footer {
+  margin-top: auto;
+  padding-top: var(--s-sm);
+  border-top: 1px solid var(--g-border);
+}
+.review-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--t-100);
+}
+.review-detail {
+  font-size: 0.75rem;
+  color: var(--t-50);
+  margin-top: 2px;
+}
