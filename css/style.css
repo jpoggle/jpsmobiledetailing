@@ -1259,7 +1259,37 @@ button { font-family: var(--font); }
   #blob-1, #blob-2, #blob-3 { filter: blur(60px); }
 }
 
-/* ── Review Cards ─────────────────────────────────────────────────────── */
+/* ── Reviews Grid + Cards ─────────────────────────────────────────────── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-md);
+}
+@media (max-width: 960px) {
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .reviews-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-left:  4px;
+    padding-right: 4px;
+    padding-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .reviews-grid > .review-card {
+    flex: 0 0 85vw;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+}
 .review-card {
   padding: var(--s-lg);
   display: flex;
@@ -1291,30 +1321,4 @@ button { font-family: var(--font); }
   font-size: 0.75rem;
   color: var(--t-50);
   margin-top: 2px;
-}
-
-/* ── Reviews — horizontal scroll carousel on mobile ──────────────────── */
-@media (max-width: 700px) {
-  .reviews-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: var(--s-md);
-    /* Extend to container edges so cards bleed to the edge naturally */
-    margin-left:  calc(-1 * var(--s-lg));
-    margin-right: calc(-1 * var(--s-lg));
-    padding-left:  var(--s-lg);
-    padding-right: var(--s-lg);
-    padding-bottom: 4px;
-    /* Hide scrollbar — swipe gesture is the UI */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .reviews-grid::-webkit-scrollbar { display: none; }
-  .reviews-grid > .review-card {
-    flex: 0 0 82vw;
-    max-width: 320px;
-    scroll-snap-align: start;
-  }
 }
