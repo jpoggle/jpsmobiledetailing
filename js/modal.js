@@ -57,9 +57,9 @@ const EMAILJS_CONTACT_TMPL = 'template_quote';  // reuse same template until you
         <div class="service-options" role="group" aria-label="Select a service">
 
           <label class="service-option">
-            <input type="radio" name="quoteService" value="Exterior Detail — $60+" />
+            <input type="radio" name="quoteService" value="Exterior Detail — $75+" />
             <div class="option-card">
-              <span class="option-price">$60+</span>
+              <span class="option-price">$75+</span>
               <span class="option-name">Exterior Detail</span>
             </div>
           </label>
