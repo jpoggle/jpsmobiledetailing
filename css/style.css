@@ -884,6 +884,67 @@ button { font-family: var(--font); }
 #stepConfirm { text-align: center; padding-bottom: var(--s-sm); }
 #stepConfirm h3 { margin-bottom: var(--s-sm); }
 
+.pay-panel {
+  background: var(--g-xs);
+  border: 1px solid var(--g-border);
+  border-radius: var(--r-lg);
+  padding: var(--s-md);
+  text-align: left;
+}
+.pay-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(0,150,210,0.10);
+  border: 1px solid rgba(0,150,210,0.22);
+  border-radius: var(--r-pill);
+  padding: 0.22rem 0.70rem;
+  margin-bottom: var(--s-sm);
+}
+.btn-apple-pay {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--r-md);
+  color: var(--t-50);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.78rem 1rem;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--s-sm);
+  opacity: 0.55;
+}
+.pay-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--s-sm);
+  font-size: 0.72rem;
+  color: var(--t-50);
+  margin: var(--s-sm) 0;
+}
+.pay-divider::before, .pay-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.pay-security-row {
+  margin-top: var(--s-sm);
+  font-size: 0.72rem;
+  color: var(--t-50);
+  text-align: center;
+}
+
 /* -- 16. FORMS ---------------------------------------------------------- */
 .form-group { margin-bottom: var(--s-md); }
 .form-label {
