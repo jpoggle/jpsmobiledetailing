@@ -501,6 +501,43 @@ button { font-family: var(--font); }
 .hero-reviews-badge:hover { background: rgba(10, 65, 120, 0.55); }
 .hero-reviews-badge .stars { color: #FFB800; letter-spacing: 2px; font-size: 0.88rem; }
 
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--t-70);
+  line-height: 1.65;
+  max-width: 44ch;
+  margin-top: var(--s-md);
+}
+
+/* -- Trust Strip (below hero) ------------------------------------------- */
+.trust-strip {
+  padding: var(--s-md) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(0,14,28,0.40);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.trust-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.trust-reviews-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: var(--t-100);
+  transition: opacity 0.25s;
+}
+.trust-reviews-link:hover { opacity: 0.80; }
+.trust-stars  { color: #FFB800; font-size: 0.82rem; letter-spacing: 2px; }
+.trust-rating { font-size: 0.88rem; font-weight: 700; color: var(--t-100); }
+.trust-source { font-size: 0.78rem; color: var(--t-50); }
+.trust-divider { width: 1px; height: 24px; background: rgba(255,255,255,0.08); flex-shrink: 0; }
+
 .hero-stats {
   display: flex;
   gap: var(--s-md);
@@ -1277,6 +1314,9 @@ button { font-family: var(--font); }
   .stat-pill .stat-label { font-size: 0.62rem; }
   .life-photos-grid .wide { grid-column: span 2; }
   .gallery-ba-pair-inner img { height: 110px; }
+  .hero-sub { font-size: 0.92rem; }
+  .trust-strip-inner { gap: var(--s-sm); }
+  .trust-divider { display: none; }
 }
 
 @media (max-width: 700px) {
