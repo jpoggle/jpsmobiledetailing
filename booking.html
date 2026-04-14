@@ -37,7 +37,7 @@
     }
   }
   </script>
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -417,6 +417,10 @@
       }
       trySend(10); // retry up to 10x (3 seconds) waiting for SDK
     });
+
+    // Prevent booking in the past
+    var dateEl = document.getElementById('bDate');
+    if (dateEl) dateEl.min = new Date().toISOString().slice(0, 10);
   })();
   </script>
 </body>
