@@ -101,12 +101,21 @@ function initContactForm() {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
+    const firstName = (form.querySelector('#cFirstName') || form.querySelector('[name="firstName"]'))?.value.trim() || '';
+    const lastName  = (form.querySelector('#cLastName')  || form.querySelector('[name="lastName"]'))?.value.trim()  || '';
+    const email     = (form.querySelector('#cEmail')     || form.querySelector('[name="email"]'))?.value.trim()     || '';
+    const city      = (form.querySelector('#cCity')      || form.querySelector('[name="city"]'))?.value.trim()      || '';
+    const vehicle   = (form.querySelector('#cVehicle')   || form.querySelector('[name="vehicle"]'))?.value.trim()   || '';
+    const message   = (form.querySelector('#cMessage')   || form.querySelector('[name="message"]'))?.value.trim()   || '';
+
     const params = {
-      from_name: (form.querySelector('[name="name"]')    || form.querySelector('#cName'))?.value    || '',
-      phone:     (form.querySelector('[name="phone"]')   || form.querySelector('#cPhone'))?.value   || '',
-      service:   (form.querySelector('[name="service"]') || form.querySelector('#cService'))?.value || '',
-      notes:     (form.querySelector('[name="message"]') || form.querySelector('#cMessage'))?.value || '',
-      vehicle: 'N/A', vehicle_type: 'N/A', condition: 'N/A', addons: 'N/A', city: 'N/A',
+      from_name:    (firstName + ' ' + lastName).trim() || 'Website Visitor',
+      phone:        (form.querySelector('#cPhone') || form.querySelector('[name="phone"]'))?.value.trim() || '',
+      service:      (form.querySelector('#cService') || form.querySelector('[name="service"]'))?.value.trim() || '',
+      city:         city || 'Not provided',
+      vehicle:      vehicle || 'Not provided',
+      notes:        [email ? 'Reply email: ' + email : '', message].filter(Boolean).join('\n') || 'None',
+      vehicle_type: 'N/A', condition: 'N/A', addons: 'N/A',
     };
 
     function onDone(success) {
