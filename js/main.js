@@ -135,10 +135,72 @@ function initContactForm() {
   });
 }
 
+/* ── Booking Form ──────────────────────────────────────────────────────── */
+function initBookingForm() {
+  const form = document.getElementById('bookingForm');
+  if (!form) return;
+
+  // Prevent past dates
+  const dateEl = form.querySelector('#bDate');
+  if (dateEl) dateEl.min = new Date().toISOString().slice(0, 10);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn  = form.querySelector('[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const firstName   = form.querySelector('#bFirstName')?.value.trim()  || '';
+    const lastName    = form.querySelector('#bLastName')?.value.trim()   || '';
+    const phone       = form.querySelector('#bPhone')?.value.trim()      || '';
+    const email       = form.querySelector('#bEmail')?.value.trim()      || '';
+    const vehicle     = form.querySelector('#bVehicle')?.value.trim()    || '';
+    const vehicleSize = form.querySelector('#bVehicleSize')?.value.trim()|| '';
+    const service     = form.querySelector('#bService')?.value.trim()    || '';
+    const date        = form.querySelector('#bDate')?.value              || '';
+    const time        = form.querySelector('#bTime')?.value              || '';
+    const address     = form.querySelector('#bAddress')?.value.trim()    || '';
+    const notes       = form.querySelector('#bNotes')?.value.trim()      || '';
+
+    const params = {
+      from_name:    (firstName + ' ' + lastName).trim() || 'Website Visitor',
+      phone:        phone,
+      service:      service || 'Not specified',
+      city:         address || 'Not provided',
+      vehicle:      [vehicle, vehicleSize].filter(Boolean).join(' — ') || 'Not provided',
+      vehicle_type: vehicleSize || 'N/A',
+      condition:    'N/A',
+      addons:       'N/A',
+      notes:        ['Preferred date: ' + (date || 'Not specified'),
+                     'Preferred time: ' + (time || 'Any'),
+                     email ? 'Reply email: ' + email : '',
+                     notes ? 'Notes: ' + notes : ''].filter(Boolean).join('\n') || 'None',
+    };
+
+    function onDone(success) {
+      btn.textContent = success ? '✓ Booking Request Sent!' : '✓ Sent!';
+      btn.style.background = 'linear-gradient(135deg, #0d9e7a, #14c99a)';
+      btn.style.animation  = 'none';
+      setTimeout(() => {
+        btn.textContent      = orig;
+        btn.disabled         = false;
+        btn.style.background = '';
+        btn.style.animation  = '';
+        form.reset();
+        if (dateEl) dateEl.min = new Date().toISOString().slice(0, 10);
+      }, 5000);
+    }
+
+    sendEmail(params, onDone);
+  });
+}
+
 /* ── Init ─────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCounters();
   initFAQ();
   initContactForm();
+  initBookingForm();
 });
