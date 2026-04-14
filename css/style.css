@@ -156,7 +156,6 @@ button { font-family: var(--font); }
   text-transform: uppercase;
   color: var(--t-label);
   margin-bottom: var(--s-sm);
-  white-space: nowrap;
 }
 
 .lead {
@@ -1270,9 +1269,8 @@ button { font-family: var(--font); }
   .hero-actions .hero-contact-pill { align-self: center; width: auto; font-size: 0.78rem; opacity: 0.65; padding: 0.4rem 1.1rem; min-height: 36px; }
   .container      { padding: 0 var(--s-md); }
   .d1             { font-size: clamp(2.2rem, 9vw, 3rem); }
-  .hero-stats     { gap: 6px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: none; }
-  .hero-stats::-webkit-scrollbar { display: none; }
-  .stat-pill      { padding: 0.4rem 0.7rem; flex-shrink: 0; }
+  .hero-stats     { gap: 6px; flex-wrap: wrap; }
+  .stat-pill      { padding: 0.4rem 0.7rem; }
   .stat-pill .stat-num   { font-size: 0.88rem; }
   .stat-pill .stat-label { font-size: 0.62rem; }
   .life-photos-grid .wide { grid-column: span 2; }
